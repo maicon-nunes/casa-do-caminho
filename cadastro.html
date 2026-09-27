@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro | Casa do Caminho</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #18314a; background: #f2f6f9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.5; }
+    header, footer { background: #19466b; color: white; padding: 1rem max(1rem, calc((100vw - 780px)/2)); }
+    header strong { font-size: 1.3rem; }
+    nav ul { display: flex; flex-wrap: wrap; gap: 1.2rem; list-style: none; padding: 0; margin: .5rem 0 0; }
+    nav a, footer a { color: white; }
+    main { max-width: 780px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { line-height: 1.2; }
+    .intro { max-width: 65ch; }
+    form { background: white; padding: clamp(1rem, 4vw, 2rem); border-radius: 12px; box-shadow: 0 3px 18px #18314a15; }
+    fieldset { border: 2px solid #bdd0de; border-radius: 8px; margin: 0 0 1.4rem; padding: 1rem; }
+    legend { padding: 0 .35rem; font-weight: 700; font-size: 1.12rem; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .full { grid-column: 1 / -1; }
+    label { display: block; font-weight: 600; margin-bottom: .3rem; }
+    input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+      width: 100%; padding: .72rem; font: inherit; color: inherit; border: 1px solid #738ba0; border-radius: 5px;
+    }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #b65b0b; outline-offset: 2px; }
+    .hint { font-size: .9rem; margin: .25rem 0 0; }
+    .choice { display: flex; align-items: flex-start; gap: .6rem; margin: .7rem 0; }
+    .choice input { margin-top: .35rem; }
+    .choice label { font-weight: 400; margin: 0; }
+    button { background: #19466b; color: white; border: 0; border-radius: 5px; padding: .85rem 1.4rem; font: inherit; font-weight: 700; cursor: pointer; }
+    button:hover { background: #123653; }
+    #resultado { margin-top: 1rem; font-weight: 600; }
+    footer { margin-top: 2rem; }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Casa do Caminho</strong>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Cadastro para participar</h1>
+    <p class="intro">Preencha seus dados para demonstrar interesse em doações ou voluntariado. Os campos marcados com * são obrigatórios.</p>
+    <p class="intro"><strong>Atividade de demonstração:</strong> este formulário verifica o preenchimento no navegador, mas ainda não envia nem armazena dados. Para testar, use dados fictícios.</p>
+
+    <form id="cadastro" action="#" method="post">
+      <fieldset>
+        <legend>Dados pessoais</legend>
+        <div class="grid">
+          <div class="full">
+            <label for="nome">Nome completo *</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" minlength="3" maxlength="100" required>
+          </div>
+          <div>
+            <label for="nascimento">Data de nascimento *</label>
+            <input id="nascimento" name="nascimento" type="date" autocomplete="bday" required>
+          </div>
+          <div>
+            <label for="cpf">CPF *</label>
+            <input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off"
+              placeholder="000.000.000-00" maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+              title="Digite o CPF no formato 000.000.000-00" aria-describedby="cpf-ajuda" required>
+            <p class="hint" id="cpf-ajuda">Formato: 000.000.000-00.</p>
+          </div>
+          <div>
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="telefone">Celular *</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="numeric" autocomplete="tel"
+              placeholder="(00) 00000-0000" maxlength="15" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+              title="Digite o celular no formato (00) 00000-0000" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço</legend>
+        <div class="grid">
+          <div>
+            <label for="cep">CEP *</label>
+            <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code"
+              placeholder="00000-000" maxlength="9" pattern="[0-9]{5}-[0-9]{3}"
+              title="Digite o CEP no formato 00000-000" required>
+          </div>
+          <div>
+            <label for="estado">Estado *</label>
+            <select id="estado" name="estado" autocomplete="address-level1" required>
+              <option value="">Selecione o estado</option>
+              <option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option><option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="endereco">Endereço *</label>
+            <input id="endereco" name="endereco" type="text" autocomplete="address-line1"
+              placeholder="Rua e número" maxlength="120" required>
+          </div>
+          <div class="full">
+            <label for="cidade">Cidade *</label>
+            <input id="cidade" name="cidade" type="text" autocomplete="address-level2" maxlength="80" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Como deseja participar?</legend>
+        <div class="choice">
+          <input id="voluntario" name="participacao" type="radio" value="voluntariado" required>
+          <label for="voluntario">Quero participar como voluntário</label>
+        </div>
+        <div class="choice">
+          <input id="doador" name="participacao" type="radio" value="doacao">
+          <label for="doador">Quero receber informações sobre doações</label>
+        </div>
+        <label for="mensagem">Mensagem (opcional)</label>
+        <textarea id="mensagem" name="mensagem" rows="4" maxlength="500" placeholder="Conte brevemente como gostaria de ajudar."></textarea>
+      </fieldset>
+
+      <button type="submit">Verificar cadastro</button>
+      <p id="resultado" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer><p>Casa do Caminho — Projeto acadêmico demonstrativo.</p></footer>
+
+  <script>
+    const somenteDigitos = valor => valor.replace(/\D/g, '');
+    const cpf = document.querySelector('#cpf');
+    const telefone = document.querySelector('#telefone');
+    const cep = document.querySelector('#cep');
+    const nascimento = document.querySelector('#nascimento');
+    const formulario = document.querySelector('#cadastro');
+    const resultado = document.querySelector('#resultado');
+
+    nascimento.max = new Date().toISOString().slice(0, 10);
+
+    cpf.addEventListener('input', () => {
+      const d = somenteDigitos(cpf.value).slice(0, 11);
+      cpf.value = d.replace(/^(\d{3})(\d)/, '$1.$2')
+        .replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
+        .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+      cpf.setCustomValidity('');
+    });
+    telefone.addEventListener('input', () => {
+      const d = somenteDigitos(telefone.value).slice(0, 11);
+      telefone.value = d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2, 7)}${d.length > 7 ? '-' + d.slice(7) : ''}` : d;
+    });
+    cep.addEventListener('input', () => {
+      const d = somenteDigitos(cep.value).slice(0, 8);
+      cep.value = d.length > 5 ? `${d.slice(0, 5)}-${d.slice(5)}` : d;
+    });
+
+    function cpfValido(valor) {
+      const d = somenteDigitos(valor);
+      if (d.length !== 11 || /^(\d)\1{10}$/.test(d)) return false;
+      for (let tamanho = 9; tamanho < 11; tamanho++) {
+        let soma = 0;
+        for (let i = 0; i < tamanho; i++) soma += Number(d[i]) * (tamanho + 1 - i);
+        const digito = (soma * 10) % 11 % 10;
+        if (digito !== Number(d[tamanho])) return false;
+      }
+      return true;
+    }
+
+    formulario.addEventListener('submit', evento => {
+      evento.preventDefault();
+      resultado.textContent = '';
+      cpf.setCustomValidity(cpfValido(cpf.value) ? '' : 'Confira os dígitos do CPF.');
+      if (!formulario.reportValidity()) return;
+      resultado.textContent = 'Preenchimento válido. Esta demonstração não envia nem armazena os dados.';
+    });
+  </script>
+</body>
+</html>

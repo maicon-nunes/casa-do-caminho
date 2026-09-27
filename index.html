@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projeto acadêmico de página institucional para a Casa do Caminho.">
+  <title>Início | Casa do Caminho</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #18314a; background: #f2f6f9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.5; }
+    header, footer { background: #19466b; color: white; padding: 1rem max(1rem, calc((100vw - 780px)/2)); }
+    header strong { font-size: 1.3rem; }
+    nav ul { display: flex; flex-wrap: wrap; gap: 1.2rem; list-style: none; padding: 0; margin: .5rem 0 0; }
+    nav a, footer a { color: white; }
+    main { max-width: 780px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { line-height: 1.2; }
+    section { background: white; padding: clamp(1rem, 4vw, 2rem); border-radius: 12px; margin: 1.3rem 0; box-shadow: 0 3px 18px #18314a15; }
+    h2 { margin-top: 0; }
+    img { display: block; max-width: 100%; height: auto; border-radius: 8px; }
+    figure { margin: 1.2rem 0; }
+    figcaption { font-size: .9rem; margin-top: .4rem; }
+    .button { display: inline-block; background: #19466b; color: white; padding: .75rem 1rem; border-radius: 5px; font-weight: 700; }
+    a:focus-visible { outline: 3px solid #b65b0b; outline-offset: 3px; }
+    footer { margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Casa do Caminho</strong>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Casa do Caminho</h1>
+    <p>Um espaço digital para apresentar iniciativas solidárias e aproximar pessoas interessadas em colaborar.</p>
+
+    <section aria-labelledby="sobre">
+      <h2 id="sobre">Quem somos</h2>
+      <figure>
+        <picture>
+          <source srcset="imagens/voluntarios.webp" type="image/webp">
+          <img src="imagens/voluntarios.jpg" width="1672" height="941"
+            alt="Cinco voluntários organizando alimentos e roupas em caixas para doação">
+        </picture>
+        <figcaption>Imagem ilustrativa de uma atividade voluntária.</figcaption>
+      </figure>
+      <p>Este site acadêmico apresenta a Casa do Caminho como uma organização voltada à participação da comunidade e ao apoio por meio de ações solidárias.</p>
+    </section>
+
+    <section aria-labelledby="missao">
+      <h2 id="missao">Nossa proposta</h2>
+      <p>Facilitar o acesso a informações sobre iniciativas sociais e mostrar caminhos para quem deseja contribuir com doações ou trabalho voluntário.</p>
+    </section>
+
+    <section aria-labelledby="participar">
+      <h2 id="participar">Como participar</h2>
+      <p>Conheça as formas de apoio e escolha aquela que faz sentido para você.</p>
+      <a class="button" href="projetos.html">Conhecer as iniciativas</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Casa do Caminho — Projeto acadêmico demonstrativo.</p>
+    <p><a href="cadastro.html">Acessar cadastro</a></p>
+  </footer>
+</body>
+</html>
