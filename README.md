@@ -83,3 +83,16 @@ As alterações são integradas por pull requests.
 
 A configuração de hospedagem será realizada após a revisão
 e a integração da versão na branch `main`.
+
+## Testes manuais realizados em 29/09/2026
+
+- Navegação com Tab e Shift + Tab, com foco visível.
+- Ampliação de 200% sem cortes ou sobreposição observados.
+- Bloqueio de e-mail sem arroba, com orientação para correção.
+- Identificação e bloqueio de CPF inválido.
+- Menu móvel operado por teclado, fechando após selecionar Projetos.
+- Nomes dos campos anunciados corretamente pelo Narrador do Windows.
+
+Os resultados correspondem aos percursos testados.
+Ainda falta verificar o contraste das cores e concluir a auditoria
+antes de afirmar conformidade integral com WCAG 2.1 AA.
