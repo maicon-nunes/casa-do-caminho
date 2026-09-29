@@ -4,51 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro | Casa do Caminho</title>
-  <style>
-    :root { font-family: system-ui, sans-serif; color: #18314a; background: #f2f6f9; }
-    * { box-sizing: border-box; }
-    body { margin: 0; line-height: 1.5; }
-    header, footer { background: #19466b; color: white; padding: 1rem max(1rem, calc((100vw - 780px)/2)); }
-    header strong { font-size: 1.3rem; }
-    nav ul { display: flex; flex-wrap: wrap; gap: 1.2rem; list-style: none; padding: 0; margin: .5rem 0 0; }
-    nav a, footer a { color: white; }
-    main { max-width: 780px; margin: 2rem auto; padding: 0 1rem; }
-    h1 { line-height: 1.2; }
-    .intro { max-width: 65ch; }
-    form { background: white; padding: clamp(1rem, 4vw, 2rem); border-radius: 12px; box-shadow: 0 3px 18px #18314a15; }
-    fieldset { border: 2px solid #bdd0de; border-radius: 8px; margin: 0 0 1.4rem; padding: 1rem; }
-    legend { padding: 0 .35rem; font-weight: 700; font-size: 1.12rem; }
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .full { grid-column: 1 / -1; }
-    label { display: block; font-weight: 600; margin-bottom: .3rem; }
-    input:not([type="radio"]):not([type="checkbox"]), select, textarea {
-      width: 100%; padding: .72rem; font: inherit; color: inherit; border: 1px solid #738ba0; border-radius: 5px;
-    }
-    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #b65b0b; outline-offset: 2px; }
-    .hint { font-size: .9rem; margin: .25rem 0 0; }
-    .choice { display: flex; align-items: flex-start; gap: .6rem; margin: .7rem 0; }
-    .choice input { margin-top: .35rem; }
-    .choice label { font-weight: 400; margin: 0; }
-    button { background: #19466b; color: white; border: 0; border-radius: 5px; padding: .85rem 1.4rem; font: inherit; font-weight: 700; cursor: pointer; }
-    button:hover { background: #123653; }
-    #resultado { margin-top: 1rem; font-weight: 600; }
-    footer { margin-top: 2rem; }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-  </style>
+  <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
   <header>
     <strong>Casa do Caminho</strong>
-    <nav aria-label="Navegação principal">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">☰ <span>Menu</span></button>
+    <nav id="menu-principal" aria-label="Navegação principal">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="projetos.html">Projetos</a></li>
+        <li class="submenu-item">
+          <button class="submenu-toggle" type="button" aria-expanded="false" aria-controls="submenu-participar">Participar ▾</button>
+          <ul id="submenu-participar" class="submenu">
+            <li><a href="projetos.html">Conhecer projetos</a></li>
+            <li><a href="cadastro.html">Quero colaborar</a></li>
+          </ul>
+        </li>
         <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main class="page-grid">
     <h1>Cadastro para participar</h1>
     <p class="intro">Preencha seus dados para demonstrar interesse em doações ou voluntariado. Os campos marcados com * são obrigatórios.</p>
     <p class="intro"><strong>Atividade de demonstração:</strong> este formulário verifica o preenchimento no navegador, mas ainda não envia nem armazena dados. Para testar, use dados fictícios.</p>
@@ -143,52 +121,7 @@
 
   <footer><p>Casa do Caminho — Projeto acadêmico demonstrativo.</p></footer>
 
-  <script>
-    const somenteDigitos = valor => valor.replace(/\D/g, '');
-    const cpf = document.querySelector('#cpf');
-    const telefone = document.querySelector('#telefone');
-    const cep = document.querySelector('#cep');
-    const nascimento = document.querySelector('#nascimento');
-    const formulario = document.querySelector('#cadastro');
-    const resultado = document.querySelector('#resultado');
-
-    nascimento.max = new Date().toISOString().slice(0, 10);
-
-    cpf.addEventListener('input', () => {
-      const d = somenteDigitos(cpf.value).slice(0, 11);
-      cpf.value = d.replace(/^(\d{3})(\d)/, '$1.$2')
-        .replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
-        .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
-      cpf.setCustomValidity('');
-    });
-    telefone.addEventListener('input', () => {
-      const d = somenteDigitos(telefone.value).slice(0, 11);
-      telefone.value = d.length > 2 ? `(${d.slice(0, 2)}) ${d.slice(2, 7)}${d.length > 7 ? '-' + d.slice(7) : ''}` : d;
-    });
-    cep.addEventListener('input', () => {
-      const d = somenteDigitos(cep.value).slice(0, 8);
-      cep.value = d.length > 5 ? `${d.slice(0, 5)}-${d.slice(5)}` : d;
-    });
-
-    function cpfValido(valor) {
-      const d = somenteDigitos(valor);
-      if (d.length !== 11 || /^(\d)\1{10}$/.test(d)) return false;
-      for (let tamanho = 9; tamanho < 11; tamanho++) {
-        let soma = 0;
-        for (let i = 0; i < tamanho; i++) soma += Number(d[i]) * (tamanho + 1 - i);
-        const digito = (soma * 10) % 11 % 10;
-        if (digito !== Number(d[tamanho])) return false;
-      }
-      return true;
-    }
-
-    formulario.addEventListener('submit', evento => {
-      evento.preventDefault();
-      resultado.textContent = '';
-      cpf.setCustomValidity(cpfValido(cpf.value) ? '' : 'Confira os dígitos do CPF.');
-      if (!formulario.reportValidity()) return;
-      resultado.textContent = 'Preenchimento válido. Esta demonstração não envia nem armazena os dados.';
-    });
-  </script>
+  <script src="../js/cadastro.js" defer></script>
+  <script src="../js/navegacao.js" defer></script>
 </body>
 </html>
