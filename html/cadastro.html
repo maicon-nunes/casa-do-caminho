@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro | Casa do Caminho</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <header>
+    <strong>Casa do Caminho</strong>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">☰ <span>Menu</span></button>
+    <nav id="menu-principal" aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li class="submenu-item">
+          <button class="submenu-toggle" type="button" aria-expanded="false" aria-controls="submenu-participar">Participar ▾</button>
+          <ul id="submenu-participar" class="submenu">
+            <li><a href="projetos.html">Conhecer projetos</a></li>
+            <li><a href="cadastro.html">Quero colaborar</a></li>
+          </ul>
+        </li>
+        <li><a href="cadastro.html" aria-current="page">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-grid">
+    <h1>Cadastro para participar</h1>
+    <p class="intro">Preencha seus dados para demonstrar interesse em doações ou voluntariado. Os campos marcados com * são obrigatórios.</p>
+    <p class="intro"><strong>Atividade de demonstração:</strong> este formulário verifica o preenchimento no navegador, mas ainda não envia nem armazena dados. Para testar, use dados fictícios.</p>
+
+    <form id="cadastro" action="#" method="post">
+      <fieldset>
+        <legend>Dados pessoais</legend>
+        <div class="grid">
+          <div class="full">
+            <label for="nome">Nome completo *</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" minlength="3" maxlength="100" required>
+          </div>
+          <div>
+            <label for="nascimento">Data de nascimento *</label>
+            <input id="nascimento" name="nascimento" type="date" autocomplete="bday" required>
+          </div>
+          <div>
+            <label for="cpf">CPF *</label>
+            <input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off"
+              placeholder="000.000.000-00" maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+              title="Digite o CPF no formato 000.000.000-00" aria-describedby="cpf-ajuda" required>
+            <p class="hint" id="cpf-ajuda">Formato: 000.000.000-00.</p>
+          </div>
+          <div>
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="telefone">Celular *</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="numeric" autocomplete="tel"
+              placeholder="(00) 00000-0000" maxlength="15" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+              title="Digite o celular no formato (00) 00000-0000" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço</legend>
+        <div class="grid">
+          <div>
+            <label for="cep">CEP *</label>
+            <input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code"
+              placeholder="00000-000" maxlength="9" pattern="[0-9]{5}-[0-9]{3}"
+              title="Digite o CEP no formato 00000-000" required>
+          </div>
+          <div>
+            <label for="estado">Estado *</label>
+            <select id="estado" name="estado" autocomplete="address-level1" required>
+              <option value="">Selecione o estado</option>
+              <option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option><option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="endereco">Endereço *</label>
+            <input id="endereco" name="endereco" type="text" autocomplete="address-line1"
+              placeholder="Rua e número" maxlength="120" required>
+          </div>
+          <div class="full">
+            <label for="cidade">Cidade *</label>
+            <input id="cidade" name="cidade" type="text" autocomplete="address-level2" maxlength="80" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Como deseja participar?</legend>
+        <div class="choice">
+          <input id="voluntario" name="participacao" type="radio" value="voluntariado" required>
+          <label for="voluntario">Quero participar como voluntário</label>
+        </div>
+        <div class="choice">
+          <input id="doador" name="participacao" type="radio" value="doacao">
+          <label for="doador">Quero receber informações sobre doações</label>
+        </div>
+        <label for="mensagem">Mensagem (opcional)</label>
+        <textarea id="mensagem" name="mensagem" rows="4" maxlength="500" placeholder="Conte brevemente como gostaria de ajudar."></textarea>
+      </fieldset>
+
+      <button type="submit">Verificar cadastro</button>
+      <p id="resultado" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer><p>Casa do Caminho — Projeto acadêmico demonstrativo.</p></footer>
+
+  <script src="../js/cadastro.js" defer></script>
+  <script src="../js/navegacao.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conheça as formas de participação no projeto acadêmico Casa do Caminho.">
+  <title>Projetos | Casa do Caminho</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+  <header>
+    <strong>Casa do Caminho</strong>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">☰ <span>Menu</span></button>
+    <nav id="menu-principal" aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+        <li class="submenu-item">
+          <button class="submenu-toggle" type="button" aria-expanded="false" aria-controls="submenu-participar">Participar ▾</button>
+          <ul id="submenu-participar" class="submenu">
+            <li><a href="projetos.html">Conhecer projetos</a></li>
+            <li><a href="cadastro.html">Quero colaborar</a></li>
+          </ul>
+        </li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-grid">
+    <h1>Projetos e formas de ajudar</h1>
+    <p>Esta página apresenta possibilidades de participação no projeto acadêmico da Casa do Caminho.</p>
+
+    <section aria-labelledby="participacao">
+      <h2 id="participacao">Como participar</h2>
+      <p>Existem diferentes maneiras de colaborar com uma iniciativa social. Escolha a opção de seu interesse para conhecer o próximo passo.</p>
+      <aside class="notice" aria-label="Aviso sobre o cadastro">
+        <strong>Aviso:</strong> esta página é um exercício acadêmico. O formulário verifica dados no navegador, mas não realiza um cadastro real.
+      </aside>
+      <button type="button" class="info-button" id="abrir-info">Como funciona este projeto?</button>
+      <figure>
+        <picture>
+          <source srcset="../imagens/voluntarios.webp" type="image/webp">
+          <img src="../imagens/voluntarios.jpg" width="1672" height="941"
+            alt="Voluntários separando alimentos e roupas em caixas para doação">
+        </picture>
+        <figcaption>Imagem ilustrativa de colaboração comunitária.</figcaption>
+      </figure>
+    </section>
+
+    <section class="initiative-grid" aria-labelledby="iniciativas">
+      <h2 id="iniciativas">Frentes de apoio</h2>
+    </section>
+
+    <section aria-labelledby="proximo-passo">
+      <h2 id="proximo-passo">Próximo passo</h2>
+      <p>Escolha no formulário como gostaria de participar. Este projeto acadêmico não envia os dados cadastrados.</p>
+      <a class="button" href="cadastro.html">Ir para o cadastro</a>
+    </section>
+  </main>
+
+  <dialog id="info-dialog" aria-labelledby="info-dialog-title">
+    <h2 id="info-dialog-title">Sobre a Casa do Caminho</h2>
+    <p>Esta é uma plataforma acadêmica demonstrativa. Você pode conhecer as iniciativas e testar o formulário com dados fictícios. Nenhuma informação é enviada ou armazenada.</p>
+    <form method="dialog"><button type="submit">Entendi</button></form>
+  </dialog>
+
+  <footer><p>Casa do Caminho — Projeto acadêmico demonstrativo.</p></footer>
+  <script src="../js/componentes.js" defer></script>
+  <script src="../js/persistencia.js" defer></script>
+  <script src="../js/templates.js" defer></script>
+  <script src="../js/navegacao.js" defer></script>
+</body>
+</html>
