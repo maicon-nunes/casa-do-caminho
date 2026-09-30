@@ -1,14 +1,35 @@
 CASA DO CAMINHO — PROJETO ACADÊMICO
 
-Estrutura:
-  index.html                 página inicial
-  projetos.html              iniciativas e formas de participação
-  cadastro.html              formulário demonstrativo
-  imagens/voluntarios.webp   imagem otimizada usada por navegadores compatíveis
-  imagens/voluntarios.jpg    alternativa JPEG
+Estrutura da Experiência Prática III:
+  html/index.html       página inicial
+  html/projetos.html    iniciativas e formas de participação
+  html/cadastro.html    formulário demonstrativo
+  css/estilos.css       apresentação e responsividade
+  js/navegacao.js       menu móvel e submenu com ARIA
+  js/componentes.js     modal informativo em projetos.html
+  js/cadastro.js        máscaras e validação do formulário
+  js/spa.js             roteamento por hash e troca de conteúdo no DOM
+  js/templates.js       geração dos cartões e ações de salvar para rever
+  js/persistencia.js    leitura e gravação da lista de iniciativas no localStorage
+  js/noticias.js        cartões e filtros das atualizações demonstrativas
+  imagens/voluntarios.webp  imagem otimizada
+  imagens/voluntarios.jpg   alternativa JPEG
 
-Uso: extraia o ZIP e abra index.html no navegador. Mantenha as três páginas na mesma pasta e as imagens dentro de imagens/.
+Uso: extraia o ZIP e abra html/index.html no navegador. Preserve as pastas e os caminhos relativos. O index.html agora funciona como SPA: clique nas opções do menu para trocar o conteúdo sem recarregar a página. projetos.html e cadastro.html permanecem como páginas independentes para consulta da etapa anterior. A lista de iniciativas marcadas para rever é preservada em localStorage, quando disponível.
 
-A fotografia é ilustrativa e gerada para este exercício; não retrata colaboradores reais da instituição. O formulário não envia nem armazena dados. Use dados fictícios nos testes.
+A fotografia é ilustrativa e gerada para este exercício; não retrata colaboradores reais da instituição. O formulário não envia nem armazena dados pessoais. Apenas os identificadores das iniciativas marcadas para rever ficam no navegador. Use dados fictícios nos testes.
 
-Validação HTML: as três páginas foram submetidas ao W3C Nu HTML Checker (entrada direta) em 27/09/2026. Após corrigir os atributos autocomplete do formulário, o resultado final foi 0 mensagens de erro e 0 avisos em cada página. Esta verificação trata da marcação HTML; não substitui testes de usabilidade, acessibilidade ou funcionamento de backend.
+Componente "Atualizações do projeto" (sugestão da avaliação):
+  - Variáveis: usa cores, fonte de subtítulo/corpo e espaçamentos definidos em css/estilos.css.
+  - Layout: 1 coluna abaixo de 768 px; 2 colunas a partir de 768 px; 3 colunas a partir de 1024 px. Filtros quebram linha em telas estreitas.
+  - Estados: hover e active nos filtros; foco visível por teclado; aria-pressed no filtro escolhido; botão "Limpar filtro" desabilitado quando todos os itens são exibidos; texto de feedback com a contagem dos itens visíveis.
+  - Conteúdo ilustrativo: os textos são exemplos acadêmicos, não notícias reais da organização.
+  - Teste manual: abra html/index.html, escolha Doações e Voluntariado, use Limpar filtro e teste Tab, Enter e Space nos botões.
+
+A versão da Experiência Prática I foi verificada no W3C Nu HTML Checker em 27/09/2026. Após alterações posteriores, a marcação deve ser validada novamente. Este projeto não tem backend.
+
+Revisão de casos de borda da Experiência Prática III:
+  1. Após clicar em um link do menu móvel, o menu é fechado e aria-expanded volta a false.
+  2. O limite da data de nascimento usa a data local, evitando aceitar o dia seguinte à noite em fusos como o do Brasil.
+  3. Se o navegador bloquear localStorage, "Salvar para rever" mostra um erro e mantém o estado anterior do botão.
+Teste manual sugerido: conferir navegação móvel, data futura e armazenamento desabilitado nas ferramentas do navegador.
