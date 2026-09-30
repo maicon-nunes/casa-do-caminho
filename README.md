@@ -94,5 +94,9 @@ e a integração da versão na branch `main`.
 - Nomes dos campos anunciados corretamente pelo Narrador do Windows.
 
 Os resultados correspondem aos percursos testados.
-Ainda falta verificar o contraste das cores e concluir a auditoria
-antes de afirmar conformidade integral com WCAG 2.1 AA.
+As principais combinações de texto e fundo tiveram o contraste calculado.
+O foco no cabeçalho foi alterado de laranja para branco e conferido
+visualmente no navegador.
+
+Essas verificações não representam uma auditoria completa de conformidade
+com WCAG 2.1 AA.
