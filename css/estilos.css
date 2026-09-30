@@ -259,3 +259,8 @@ main#conteudo-principal { display: block; }
 @media (min-width: 768px) { .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1024px) { .news-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (prefers-reduced-motion: reduce) { .news-filter:active:not(:disabled) { transform: none; } }
+/* Foco com contraste alto sobre o cabeçalho azul. */
+header :where(a, button):focus-visible {
+  outline: 3px solid var(--cor-superficie);
+  outline-offset: 3px;
+}
