@@ -100,3 +100,28 @@ visualmente no navegador.
 
 Essas verificações não representam uma auditoria completa de conformidade
 com WCAG 2.1 AA.
+
+
+## Otimização e build
+
+As páginas usam `css/estilos.min.css` e os arquivos `js/*.min.js`.
+Os originais legíveis permanecem disponíveis para manutenção.
+A imagem WebP é utilizada com alternativa JPEG.
+
+Para reconstruir os arquivos otimizados, instale Node.js e npm.
+Na pasta principal do projeto, execute:
+
+```sh
+npm ci
+npm run build
+```
+
+As ferramentas Terser e clean-css são usadas somente no build.
+O site continua funcionando sem bibliotecas externas no navegador.
+Edite os arquivos originais e execute o build antes de publicar.
+O script preserva os nomes globais compartilhados pelos scripts e
+a ordem de carregamento definida nos arquivos HTML.
+
+Nesta preparação, CSS e JavaScript passaram de 26.678 para 21.158 bytes,
+redução de aproximadamente 20,7% antes da compressão HTTP.
+Isso mede o tamanho desses arquivos; não é uma medição de tempo de carregamento.
